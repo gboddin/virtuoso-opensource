@@ -1,0 +1,13 @@
+language: c
+script: 
+  - sudo apt-get install build-essential devscripts
+  - sudo mk-build-deps --install -t "apt-get -fy --no-install-recommends" debian/control
+  - dpkg-buildpackage -b
+deploy:
+  provider: releases
+  api_key:
+    secure: lVM1hPuFoNfkh51xaLB2ROiln5i9hbvqoZBJKjChtcUZMV42L9z8rsh47S8rDenQwJNSjIMblqayh0dfTTTioMeCT3r5DKA4dsBHYISYziEV6w67PFW2emo9B0YLBm3YTbz2VQ8WEzkdtQhO82BmCSW9bMtVMFxQBumrHi62Uk/D1YSS62SecoBAiX1sz+fGLVmfEKREwPu8dcFrb6TXHj2QHsb0oehsowq6pKTj160E1p7MVxZ/LfhCk6DtO6jQQYufkwsyYSpSmlhF5/NoiMjmXKrH4JzsX/U9+HlnCgOp2vesFuYwQFf/BIK+lMjLRJXnWG+omdpsS374l4Wlt6t1WL7HHZ1atTZ3/ppd9FHk0JV/Dwmdo1IsyyoBjdxtNG+qXiFGk77db8XuIfpOaXOP53Lx7VZUW7E9lm7wzeY6ZD7aHLz8U9i3qLPYlEJ9J9DdJp6IzcldZN9be8mYmY7daqTC/RjHIZljl7rlKKWviBjTTO7yXPjEUnSr4b811/51Rm7D0LbQmWp2xPbOGNvg7GgNOE3R1VtLeCBvFoU1abS1e/dMx5lpyx0xgRtWX3/vUTRvE5wpbUYuwT4MPWFZHlKynmVcIBfnkVEGGmp2q5Mg4hMxHVbjVGKVxh7k5rSnRC9r4ZcrEluG3XOdHUF7mYU5YTu0/CneSCgme+o=
+  file_glob: true
+  file: ${HOME}/build/${TRAVIS_REPO_SLUG}/*.deb
+  on:
+    tags: true
