@@ -4,7 +4,7 @@ dist: trusty
 script: 
   - sudo apt-get update && sudo apt-get -fy install equivs build-essential devscripts
   - sudo mk-build-deps --install -t "apt-get -fy --no-install-recommends " debian/control
-  - dpkg -i *deb
+  - sudo dpkg -i *deb
   - apt-get install -fy 
   - dpkg-buildpackage -b
 deploy:
