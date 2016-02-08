@@ -1,7 +1,9 @@
 language: c
+sudo: required
+dist: trusty
 script: 
   - sudo apt-get update && sudo apt-get install equivs build-essential devscripts
-  - sudo mk-build-deps --install -t "apt-get -fy --no-install-recommends" debian/control
+  - sudo mk-build-deps -t "apt-get -fy --no-install-recommends " debian/control 
   - dpkg-buildpackage -b
 deploy:
   provider: releases
