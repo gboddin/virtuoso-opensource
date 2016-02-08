@@ -1,6 +1,6 @@
 language: c
 script: 
-  - sudo apt-get install equivs build-essential devscripts
+  - sudo apt-get update && sudo apt-get install equivs build-essential devscripts
   - sudo mk-build-deps --install -t "apt-get -fy --no-install-recommends" debian/control
   - dpkg-buildpackage -b
 deploy:
